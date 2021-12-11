@@ -1,0 +1,50 @@
+body {
+  background-color: #11324D;
+  font-family: 'Architects Daughter', cursive;
+  text-align: center;
+  padding: 10px;
+}
+
+h1 {
+  color: #F0E5CF;
+  font-size: 4.5rem;
+  margin: 36px 0 2px;
+}
+
+h3 {
+  color: #F0E5CF;
+  margin-top: 0;
+}
+
+/* Buttons */
+button {
+  border: 9px solid #0A1931;
+  border-radius: 28px;
+  height: 225px;
+  margin: 23px;
+  width: 225px;
+}
+
+.green-button {
+  background-color: #519259;
+}
+
+.red-button {
+  background-color: #A13333;
+}
+
+.yellow-button {
+  background-color: #F0BB62;
+}
+
+.blue-button {
+  background-color: #5584AC;
+}
+
+.pressed {
+  box-shadow: 0 0 16px #C8C6C6;
+}
+
+.game-over {
+  background-color: #CD1818;
+}
