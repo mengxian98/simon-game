@@ -41,6 +41,7 @@ button {
   background-color: #5584AC;
 }
 
+/* Game Effect */
 .pressed {
   box-shadow: 0 0 16px #C8C6C6;
 }

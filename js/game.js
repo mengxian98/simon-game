@@ -3,7 +3,7 @@ var userClickedPattern = [];
 var gamePattern = [];
 var gameLevel = 0;
 
-// Call Function On Game Start
+// Wait For Game Start
 $(document).keypress(function() {
   if (gameLevel === 0) {
     $("h1").text("LEVEL " + gameLevel);
@@ -14,20 +14,19 @@ $(document).keypress(function() {
   }
 });
 
-function nextSequence() {
 
-  // Generate Game Pattern
+// Generate Game Pattern
+function nextSequence() {
   var randomNumber = Math.floor(Math.random() * 4);
   var randomChosenColor = buttonColours[randomNumber];
   gamePattern.push(randomChosenColor);
-
-  // Button Animation
-  $("#" + randomChosenColor).fadeOut(50).fadeIn(200);
-  playSound("sounds/" + randomChosenColor + ".mp3");
-
   gameLevel++;
 
+  // Game Pattern Animation
+  $("#" + randomChosenColor).fadeOut(50).fadeIn(200);
+  playSound("sounds/" + randomChosenColor + ".mp3");
 }
+
 
 // Add Buttons Event Listener
 $("button").click(function() {
@@ -36,14 +35,14 @@ $("button").click(function() {
     var userChosenColor = this.getAttribute("id");
     userClickedPattern.push(userChosenColor);
 
-    // Button Animation
+    // User Click Animation
     playSound("sounds/" + userChosenColor + ".mp3");
     animatePress(userChosenColor);
 
     // Check Pattern
     checkAnswer(userClickedPattern.length - 1)
   }
-})
+});
 
 
 // Button Animation
@@ -55,37 +54,49 @@ function animatePress(currentColour) {
 }
 
 // Button Sound
-function playSound(audioSRC) {
-  new Audio(audioSRC).play();
+function playSound(audioSource) {
+  new Audio(audioSource).play();
 }
+
 
 // Check Answer
 function checkAnswer(currentLevel) {
+
+  // Tally User Click With Game Pattern
   if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
     if (currentLevel === (gamePattern.length - 1)) {
       $("h1").text("SUCCESS!");
+
       setTimeout(function() {
         $("h1").text("LEVEL " + gameLevel);
       }, 700);
+
       setTimeout(function() {
         userClickedPattern = [];
         nextSequence();
       }, 1200);
     }
-  } else {
-    new Audio("sounds/wrong.mp3").play();
+  }
+
+  // Wrong Answer
+  else {
     $("body").addClass("game-over");
+    new Audio("sounds/wrong.mp3").play();
+
     $("h1").text("GAME OVER!");
     $("h3").text("PRESS ANY KEY TO RESTART!");
     $("h3").css("visibility", "visible");
+
     setTimeout(function() {
       $("body").removeClass("game-over");
       startOver();
     }, 200);
   }
+
 }
 
-// Start Over
+
+// Reset Values
 function startOver() {
   userClickedPattern = [];
   gamePattern = [];
