@@ -25,6 +25,73 @@ button {
   width: 225px;
 }
 
+/* Loading Screen */
+.loader-wrapper {
+  background-color: #222222;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: 1000;
+}
+
+.loader {
+  animation: spin 2s linear infinite;
+  border: 3px solid transparent;
+  border-top-color: #3498DB;
+  border-radius: 50%;
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  margin: -125px 0 0 -125px;
+  height: 250px;
+  width: 250px;
+  z-index: 1001;
+}
+
+.loader:before {
+  animation: spin 3s linear infinite;
+  border: 3px solid transparent;
+  border-top-color: #E74C3C;
+  border-radius: 50%;
+  content: "";
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  top: 15px;
+  position: absolute;
+}
+
+.loader:after {
+  animation: spin 1.5s linear infinite;
+  border: 3px solid transparent;
+  border-top-color: #F9C922;
+  border-radius: 50%;
+  content: "";
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  top: 30px;
+  position: absolute;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.load-header {
+  font-size: 3.6rem;
+}
+
+/* Game Buttons */
 .green-button {
   background-color: #519259;
 }

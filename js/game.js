@@ -3,6 +3,18 @@ var userClickedPattern = [];
 var gamePattern = [];
 var gameLevel = 0;
 
+
+// Loading Screen
+$(document).ready(function() {
+  setTimeout(function() {
+    $(".loader").fadeOut("slow");
+  }, 1800);
+  setTimeout(function() {
+    $(".loader-wrapper").slideUp();
+  }, 2800);
+});
+
+
 // Wait For Game Start
 $(document).keypress(function() {
   if (gameLevel === 0) {
